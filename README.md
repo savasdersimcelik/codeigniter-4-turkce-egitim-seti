@@ -23,3 +23,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Session Kullanımı](https://www.youtube.com/watch?v=Tdsc7UP39aQ)
 - [IP Adresine Göre İstek Sayısını Kısıtlama veya Engelleme](https://www.youtube.com/watch?v=dte-5J-ZlLM)
 - [Kullanıcı Tarayıcı - Mobil Cihaz - İşletim Sistemi Bilgilerini Öğrenme](https://www.youtube.com/watch?v=UXKJNrneNRk)
+- [Resim Üzerinde Değişiklik Yapma ( Watermark - Kırpma - Boyutlandır - Thumbnail - Döndürme - Kalite)](https://www.youtube.com/watch?v=vUuYr5KTwKs)
