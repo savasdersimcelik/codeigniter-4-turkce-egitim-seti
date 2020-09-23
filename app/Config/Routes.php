@@ -70,6 +70,18 @@ $routes->group('api', function($routes){
 });
 
 $routes->group('{locale}', function($routes){
+	$routes->group('gorsel', function($routes){
+		$routes->get('/', 'GorselController::index', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('kalite', 'GorselController::kalite', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('boyutlandir', 'GorselController::boyutlandir', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('thumbnail', 'GorselController::thumbnail', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('donder', 'GorselController::donder', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('kirp', 'GorselController::kirp', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('donustur', 'GorselController::donustur', ['namespace' => 'App\Controllers\Frontend']);
+		$routes->get('yaziekle', 'GorselController::yaziekle', ['namespace' => 'App\Controllers\Frontend']);
+	});
+
+
 	$routes->get('/', 'Home::index', ['namespace' => 'App\Controllers\Frontend']);
 
 	$routes->get('iletisim', 'Page::contact', ['namespace' => 'App\Controllers\Frontend']);
