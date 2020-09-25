@@ -125,6 +125,8 @@ $routes->group('admin', function($routes){
 
 	$routes->group('users', ['filter' => 'adminauth'], function($routes){
 		$routes->get('listing', 'Backend\Users::listing', ['as' => 'user_listing']);
+		$routes->match(['get','post'],'yenikullaniciekle', 'Backend\Users::create', ['as' => 'user_create']);
+		$routes->match(['get','post'],'yenikullaniciekle2', 'Backend\Users::new', ['as' => 'user_new']);
 	});
 	
 	$routes->get('login', 'Backend\Auth::login', [
