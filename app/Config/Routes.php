@@ -104,6 +104,19 @@ $routes->group('{locale}', function($routes){
 
 $routes->group('admin', function($routes){
 
+	$routes->group('kullanici', function($routes){
+		$routes->get('ekle', 'Backend\KullaniciController::ekle');
+		$routes->get('getir/(:num)', 'Backend\KullaniciController::getir/$1');
+		$routes->get('listele', 'Backend\KullaniciController::listele');
+		$routes->get('duzenle/(:num)', 'Backend\KullaniciController::duzenle/$1');
+		$routes->get('sil/(:num)', 'Backend\KullaniciController::sil/$1');
+		$routes->get('silinenleri-listele', 'Backend\KullaniciController::silinenleriListele');
+		$routes->get('aktifleri-listele', 'Backend\KullaniciController::aktifleriListeli');
+		$routes->get('pasifleri-listele', 'Backend\KullaniciController::pasifleriListele');
+		$routes->get('sutun-listele', 'Backend\KullaniciController::sutunListele');
+		$routes->get('offset-listele/(:num)/(:num)', 'Backend\KullaniciController::offsetListele/$1/$2');
+	});
+
 	$routes->group('send', function($routes){
 		$routes->get('sms', 'Backend\Send::sms');
 	});
