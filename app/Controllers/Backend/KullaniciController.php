@@ -64,6 +64,9 @@ class KullaniciController extends BaseController
 		return $this->response->setJSON($kullanicilar);
 	}
 
+	/**
+	 * Gönderilen ID sahip elemanı günceller
+	 */
 	public function duzenle($id = null)
 	{
 		if(!is_null($id)){
@@ -91,6 +94,9 @@ class KullaniciController extends BaseController
 		}
 	}
 
+	/**
+	 * Gönderilen ID Sahip elemanı siler
+	 */
 	public function sil($id = null)
 	{
 		if (!is_null($id)) {
@@ -102,6 +108,9 @@ class KullaniciController extends BaseController
 		}
 	}
 
+	/**
+	 * Sadece silinen dataları getirir
+	 */
 	public function silinenleriListele()
 	{
 		$kullanicilar = $this->model->onlyDeleted()->findAll();
@@ -110,6 +119,9 @@ class KullaniciController extends BaseController
 		]);
 	}
 
+	/**
+	 * Sadece aktif dataları getirir
+	 */
 	public function aktifleriListeli()
 	{
 		$kullanicilar = $this->model->where('user_status', 'ACTIVE')->findAll();
@@ -118,6 +130,9 @@ class KullaniciController extends BaseController
 		]);
 	}
 
+	/**
+	 * Sadece pasif dataları getirir
+	 */
 	public function pasifleriListele()
 	{
 		$kullanicilar = $this->model->where('user_status', 'PASSIVE')->findAll();
@@ -126,6 +141,9 @@ class KullaniciController extends BaseController
 		]);
 	}
 
+	/**
+	 * Seçilen sütun'daki datları getirir
+	 */
 	public function sutunListele()
 	{
 		$isimler = $this->model->findColumn('user_name');
@@ -134,6 +152,9 @@ class KullaniciController extends BaseController
 		]);
 	}
 
+	/**
+	 * Belirlenen limit'deki datalayı belirlenen sıradan itibaren getirir
+	 */
 	public function offsetListele($limit = null, $offet = null)
 	{
 		if(!is_null($limit) && !is_null($offet)){
@@ -143,6 +164,14 @@ class KullaniciController extends BaseController
 				'kullanicilar' => $kullanicilar
 			]);
 		}
+	}
+
+	public function sorguOlustur()
+	{
+		$kullanicilar = $this->model->getUserBlogComment();
+		return $this->response->setJSON([
+			'kullanicilar' => $kullanicilar
+		]);
 	}
 
 }

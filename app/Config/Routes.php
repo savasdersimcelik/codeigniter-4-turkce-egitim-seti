@@ -115,6 +115,7 @@ $routes->group('admin', function($routes){
 		$routes->get('pasifleri-listele', 'Backend\KullaniciController::pasifleriListele');
 		$routes->get('sutun-listele', 'Backend\KullaniciController::sutunListele');
 		$routes->get('offset-listele/(:num)/(:num)', 'Backend\KullaniciController::offsetListele/$1/$2');
+		$routes->get('sorgu-olustur', 'Backend\KullaniciController::sorguOlustur');
 	});
 
 	$routes->group('send', function($routes){

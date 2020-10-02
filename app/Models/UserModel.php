@@ -11,7 +11,7 @@ class UserModel extends Model
     protected $returnType = 'array';		// Sorgu sonucu gelen değerlerin formatı
     protected $useSoftDeletes = true;		// Datalar veritabanından gerçekten silinmesin mi ?
 
-    protected $allowedFields = ['user_name', 'user_email', 'user_phone', 'user_status'];			// Kullanılmasına izin verilen sütunlar
+    protected $allowedFields = ['user_name', 'user_email', 'user_phone', 'user_age', 'user_status'];			// Kullanılmasına izin verilen sütunlar
 
     protected $useTimestamps = true;		// Zaman birimleri kullanılsın mı ?
     protected $createdField  = 'created_at';	// Oluşturulma tarihi ile ilgili sütun'un adı
@@ -44,6 +44,160 @@ class UserModel extends Model
     	]
     ];			// Kurallara uygun olmadığı durumda dönülecek mesaj
 
-
     protected $skipValidation     = false;		// Validasyonları atla, gözardı et.
+
+
+    public function getUsersList()
+    {
+        $builder = $this->builder($this->table);
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUser($id = 3)
+    {
+        $builder = $this->builder($this->table);
+        $builder = $builder->where(['id' => $id]);
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+
+    public function getUserSelect($id = 4)
+    {
+        $builder = $this->builder($this->table);
+        $builder = $builder->where(['id' => $id]);
+        $builder = $builder->select('user_name, user_phone');
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserMaxAge()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->selectMax('user_age');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserMinAge()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->selectMin('user_age');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+
+    public function getUserAvgAge()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->selectAvg('user_age');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserSumAge()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->selectSum('user_age');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserOrWhere()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->where('id', 88);
+        $builder = $builder->orWhere('user_phone', '0123456783');
+        $builder = $builder->orWhere('user_email', 'ahmet@example.com');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserWhereIn()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->whereIn('user_phone', ['0123456783', '0123456781', '01234567812']);
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserOrWhereIn()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->whereIn('user_phone', ['0123456783', '01234567812', '01234567813']);
+        $builder = $builder->orWhereIn('user_email', ['savascelik@example.com', 'asdasd@example.com']);
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserWhereNotIn()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->whereNotIn('id', [1,3,55,5,44]);
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserLike()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->like('user_name', 'lik', 'before');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserOrLike()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->like(['user_name' => 'saba']);
+        $builder = $builder->orLike('user_email', 'bing');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserNotLike()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->notLike('user_name', 'saba');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
+    public function getUserBlogComment()
+    {
+        $builder = $this->builder($this->table);
+
+        $builder = $builder->where('users.id', 1);
+        $builder = $builder->join('blogs', 'blogs.user_id = users.id');
+        $builder = $builder->join('comments', 'comments.blog_id = blogs.id');
+        $builder = $builder->select('users.user_name, blogs.blog_title, blogs.user_id, comments.*');
+
+        $builder = $builder->get();
+        return $builder->getResultArray();
+    }
+
 }
