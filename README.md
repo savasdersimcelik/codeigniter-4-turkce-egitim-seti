@@ -27,5 +27,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Kullanıcıdan Gelen Dataları Doğrulama | Form Validation Tutorial](https://www.youtube.com/watch?v=xRnNEKK4hQU)
 - [Veritabanı Ayarları ve Model Oluşturma | Model Kullanımı #1](https://www.youtube.com/watch?v=0heUZU2kQ6c)
 - [Model CRUD İşlemler ile Veritabanında Sorgu Yapma ( find, findAll, update, insert, delete ) | Model Kullanımı #2 ](https://www.youtube.com/watch?v=ZVDeYwRQ17w)
-- [Model Query ile Veritabanında Sorgu Yapma | Model Kullanımı #3]()
-- [Model Builder ile Veritabanında Sorgu Yapma | Model Kullanımı #4]()
+- [Model Builder ile Veritabanında Sorgu Yapma | Model Kullanımı #3](https://youtu.be/p8cIQAzES5M)
