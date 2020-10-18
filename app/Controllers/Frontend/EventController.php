@@ -14,6 +14,6 @@ class EventController extends BaseController
     public function index()
     {
         echo "<br>Kayıt işlemi başarılı bir şekilde tamamlandı. Tarafınıza Doğrulama kodu gönderildi.<br>";
-        Events::trigger('dogrulamaKoduGonder', '0507123456789', 1234567);
+        Events::trigger('dogrulamaKoduGonder', '0507123456789', 12345678);
     }
 }
