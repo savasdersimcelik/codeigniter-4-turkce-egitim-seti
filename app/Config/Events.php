@@ -50,3 +50,23 @@ Events::on('pre_system', function () {
 		Services::toolbar()->respond();
 	}
 });
+
+Events::on('pre_system', function (){
+	echo "<br>Event 1 - pre_system başarılı bir şekilde çalıştı. <br>";
+	$lisans = true;
+	if(!$lisans){
+		die("Geçersiz bir lisans kullanılıyor.");
+	}
+});
+
+Events::on('post_controller_constructor', function(){
+	echo "<br> Event 2 - post_controller_constructor eventi başarılı bir şekilde çalıştı. <br>";
+});
+
+Events::on('post_system', function (){
+	echo "<br>Event 3 - post_system eventi başarılı bir şekilde çalıştı.<br>";
+});
+
+Events::on('dogrulamaKoduGonder', function ($telefon, $kod){
+	echo "<br>". $telefon . " telefon numarasına yeni bir " . $kod . " doğrulama kodu gönderildi.<br>";
+});

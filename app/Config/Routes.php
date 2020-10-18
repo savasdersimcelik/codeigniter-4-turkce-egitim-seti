@@ -81,6 +81,7 @@ $routes->group('{locale}', function($routes){
 		$routes->get('yaziekle', 'GorselController::yaziekle', ['namespace' => 'App\Controllers\Frontend']);
 	});
 
+	$routes->get('event/calistir', 'EventController::index', ['namespace' => 'App\Controllers\Frontend']);
 
 	$routes->get('/', 'Home::index', ['namespace' => 'App\Controllers\Frontend']);
 
