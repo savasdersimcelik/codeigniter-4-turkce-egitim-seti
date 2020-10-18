@@ -50,7 +50,7 @@ Events::on('pre_system', function () {
 		Services::toolbar()->respond();
 	}
 });
-
+/*
 Events::on('pre_system', function (){
 	echo "<br>Event 1 - pre_system başarılı bir şekilde çalıştı. <br>";
 	$lisans = true;
@@ -70,3 +70,4 @@ Events::on('post_system', function (){
 Events::on('dogrulamaKoduGonder', function ($telefon, $kod){
 	echo "<br>". $telefon . " telefon numarasına yeni bir " . $kod . " doğrulama kodu gönderildi.<br>";
 });
+*/

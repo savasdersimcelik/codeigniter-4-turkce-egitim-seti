@@ -14,6 +14,7 @@ namespace App\Controllers;
  * @package CodeIgniter
  */
 
+use App\Libraries\SMS;
 use CodeIgniter\Controller;
 
 class BaseController extends Controller
@@ -27,6 +28,7 @@ class BaseController extends Controller
 	 * @var array
 	 */
 	protected $helpers = [];
+    protected $sms;
 
 	/**
 	 * Constructor.
@@ -35,7 +37,7 @@ class BaseController extends Controller
 	{
 		// Do Not Edit This Line
 		parent::initController($request, $response, $logger);
-
+        $this->sms = new SMS();
 		//--------------------------------------------------------------------
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
