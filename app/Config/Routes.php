@@ -123,6 +123,7 @@ $routes->group('admin', function($routes){
 
 	$routes->group('send', function($routes){
 		$routes->get('sms', 'Backend\Send::sms');
+		$routes->get('email', 'Backend\Send::email');
 	});
 
 	$routes->group('blog', function($routes){

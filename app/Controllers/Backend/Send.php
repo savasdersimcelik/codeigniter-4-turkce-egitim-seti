@@ -26,4 +26,13 @@ class Send extends BaseController
 		echo $parser->setData($data)->renderString($sms_sablon);
 		
 	}
+
+	public function email()
+	{
+		$email = \Config\Services::email();
+		$email->setTo('nivilej304@ptcji.com');
+		$email->setSubject('Email Test');
+		$email->setMessage('Testing the email class.');
+		$email->send();
+	}
 }

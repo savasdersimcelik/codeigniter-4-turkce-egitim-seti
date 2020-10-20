@@ -30,3 +30,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Model Builder ile Veritabanında Sorgu Yapma | Model Kullanımı #3](https://youtu.be/p8cIQAzES5M)
 - [Events ( Hook ) Kullanımı | Events Class](https://youtu.be/K495dFEtV9k)
 - [Özel Kütüphane Geliştirme](https://youtu.be/c1FAmTw90gY)
+- [SMTP ile Mail Gönderme](https://www.youtube.com/watch?v=v4WJjmymshs)
