@@ -32,3 +32,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Özel Kütüphane Geliştirme](https://youtu.be/c1FAmTw90gY)
 - [SMTP ile Mail Gönderme](https://www.youtube.com/watch?v=v4WJjmymshs)
 - [NetGSM API ile SMS Gönderme](https://youtu.be/POZ27hoh2w4)
+- [İyzico API Ödeme Formu Oluşturma ve Ödeme Alma](https://youtu.be/fnMBtI19foQ)
