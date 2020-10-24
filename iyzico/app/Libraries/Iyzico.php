@@ -11,8 +11,8 @@ class Iyzico {
     public function __construct()
     {
         $this->options = new \Iyzipay\Options();
-        $this->options->setApiKey("sandbox-GNkRJmdn3wk7KXCQslFFQr5jbImbUTAH");
-        $this->options->setSecretKey("sandbox-3GcFVnTJ4lkqcNzWe3fpQ58qwTh7bhQW");
+        $this->options->setApiKey("api key");
+        $this->options->setSecretKey("secret key");
         $this->options->setBaseUrl("https://sandbox-api.iyzipay.com");
         $this->basketItems = [];
     }
