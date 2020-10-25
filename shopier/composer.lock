@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e3c5712accb4893c8f1c11a63b6d6e5",
+    "content-hash": "2543042fa670506bfa752015cb7a277e",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -51,6 +51,53 @@
             "description": "The CodeIgniter framework v4",
             "homepage": "https://codeigniter.com",
             "time": "2020-07-16T03:44:28+00:00"
+        },
+        {
+            "name": "erkineren/shopier",
+            "version": "v0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erkineren/shopier.git",
+                "reference": "28c61caacb884aacec07133d5db33ddde9c2fb69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erkineren/shopier/zipball/28c61caacb884aacec07133d5db33ddde9c2fb69",
+                "reference": "28c61caacb884aacec07133d5db33ddde9c2fb69",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "require-dev": {
+                "vlucas/phpdotenv": "^4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Shopier\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erkin Eren",
+                    "email": "eren@erkin.net",
+                    "homepage": "https://erkin.net"
+                }
+            ],
+            "description": "Shopier Entegrasyon - Php Api Sdk",
+            "keywords": [
+                "api",
+                "entegrasyon",
+                "payment gateway",
+                "shopier",
+                "ödeme alma entegrasyonu"
+            ],
+            "time": "2020-01-27T15:26:09+00:00"
         },
         {
             "name": "kint-php/kint",
