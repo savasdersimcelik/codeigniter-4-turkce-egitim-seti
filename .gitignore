@@ -2,3 +2,4 @@ ci4/.env
 ci4/vendor/
 netgsm/.env
 netgsm/vendor/
+.idea
