@@ -4,4 +4,5 @@ netgsm/.env
 netgsm/vendor/
 shopier/.env
 shopier/vendor/
+dev/
 .idea

@@ -1,51 +1,100 @@
-<?php 
+<?php
 
 namespace App\Models;
+
 use CodeIgniter\Model;
+use App\Models\VerificationModel;
 
 class UserModel extends Model
 {
-    protected $table      = 'users';		// İşlem Yapacağımız tablo adı
-    protected $primaryKey = 'id';			// Birincil anahtara sahip sütun
+    protected $table = 'users'; // İşlem Yapacağımız tablo adı
+    protected $primaryKey = 'id'; // Birincil anahtara sahip sütun
 
-    protected $returnType = 'array';		// Sorgu sonucu gelen değerlerin formatı
-    protected $useSoftDeletes = true;		// Datalar veritabanından gerçekten silinmesin mi ?
+    protected $returnType = 'object'; // Sorgu sonucu gelen değerlerin formatı
+    protected $useSoftDeletes = true; // Datalar veritabanından gerçekten silinmesin mi ?
 
-    protected $allowedFields = ['user_name', 'user_email', 'user_phone', 'user_age', 'user_status'];			// Kullanılmasına izin verilen sütunlar
+    protected $allowedFields = [
+        'user_name',
+        'user_email',
+        'user_phone',
+        'user_age',
+        'user_password',
+        'user_profile_picture',
+        'user_status',
+    ]; // Kullanılmasına izin verilen sütunlar
 
-    protected $useTimestamps = true;		// Zaman birimleri kullanılsın mı ?
-    protected $createdField  = 'created_at';	// Oluşturulma tarihi ile ilgili sütun'un adı
-    protected $updatedField  = 'updated_at';	// Datanın güncellenme tarihini saklayan sütun
-    protected $deletedField  = 'deleted_at';	// Datanın silinme tarihini saklayan sütun'un adı
+    protected $useTimestamps = true; // Zaman birimleri kullanılsın mı ?
+    protected $createdField = 'created_at'; // Oluşturulma tarihi ile ilgili sütun'un adı
+    protected $updatedField = 'updated_at'; // Datanın güncellenme tarihini saklayan sütun
+    protected $deletedField = 'deleted_at'; // Datanın silinme tarihini saklayan sütun'un adı
 
-    protected $validationRules    = [
-    	'user_name' => 'required|string|min_length[3]',
-    	'user_email' => 'required|valid_email|is_unique[users.user_email]',
-    	'user_phone' => 'required|numeric|min_length[10]|max_length[11]|is_unique[users.user_phone]'
-    ];			// Kuralların belirlendiği değişken
-    
+    protected $validationRules = [
+        'user_name' => 'required|string|min_length[3]',
+        'user_email' => 'required|valid_email|is_unique[users.user_email]',
+        'user_phone' => 'required|numeric|min_length[10]|max_length[12]|is_unique[users.user_phone]',
+    ]; // Kuralların belirlendiği değişken
+
     protected $validationMessages = [
-    	'user_name' => [
-    		'required' => 'Kullanıcı adı ve soyadı zorunlu alandır.',
-    		'string' => 'Kullanıcı adı alfabetik karakterler barındırmalıdır.',
-    		'min_length' => 'Kullanıcı adı ve soyadı en az 3 karakterli olabilir.'
-    	],
-    	'user_email' => [
-    		'required' => 'Eposta adresi zorunlu alandır',
-    		'valid_email' => 'Girilen eposta adresini kontrol edin.',
-    		'is_unique' => 'Bu eposta adresi başkası tarafından kullanılıyor.'
-    	],
-    	'user_phone' => [
-    		'required' => 'Telefon numarası zorunlu alandır',
-    		'numeric' => 'Telefon numarası rakamlardan oluşabilir.',
-    		'min_length' => 'Telefon numarası en az 10 karakterli olabilir.',
-    		'max_length' => 'Telefon numarası en fazla 11 karakterli olabilir.',
-    		'is_unique' => 'Bu telefon numarası başkası tarafından kullanılıyor.'
-    	]
-    ];			// Kurallara uygun olmadığı durumda dönülecek mesaj
+        'user_name' => [
+            'required' => 'Kullanıcı adı ve soyadı zorunlu alandır.',
+            'string' => 'Kullanıcı adı alfabetik karakterler barındırmalıdır.',
+            'min_length' => 'Kullanıcı adı ve soyadı en az 3 karakterli olabilir.',
+        ],
+        'user_email' => [
+            'required' => 'Eposta adresi zorunlu alandır',
+            'valid_email' => 'Girilen eposta adresini kontrol edin.',
+            'is_unique' => 'Bu eposta adresi başkası tarafından kullanılıyor.',
+        ],
+        'user_phone' => [
+            'required' => 'Telefon numarası zorunlu alandır',
+            'numeric' => 'Telefon numarası rakamlardan oluşabilir.',
+            'min_length' => 'Telefon numarası en az 10 karakterli olabilir.',
+            'max_length' => 'Telefon numarası en fazla 11 karakterli olabilir.',
+            'is_unique' => 'Bu telefon numarası başkası tarafından kullanılıyor.',
+        ],
+    ]; // Kurallara uygun olmadığı durumda dönülecek mesaj
 
-    protected $skipValidation     = false;		// Validasyonları atla, gözardı et.
+    protected $skipValidation   =   false; // Validasyonları atla, gözardı et.
+    protected $allowCallbaks    =   true;
 
+    protected $beforeInsert     =   ['passwordHash', 'phonePrefix'];
+    protected $afterInsert      =   ['verificationInsert'];
+    protected $beforeUpdate     =   ['passwordHash', 'phonePrefix'];
+    protected $afterUpdate      =   [];
+    protected $beforeDelete     =   [];
+    protected $afterDelete      =   ['verificationDelete'];
+
+    protected function passwordHash($data)
+    {
+        $data['data']['user_password'] = password_hash($data['data']['user_password'], PASSWORD_DEFAULT);
+        return $data;
+    }
+
+    protected function phonePrefix($data)
+    {
+        $firstChar  =   substr($data['data']['user_phone'], 0, 1);
+        if ($firstChar == '0') {
+            $data['data']['user_phone'] = "9" . $data['data']['user_phone'];
+        }
+        return $data;
+    }
+
+    protected function verificationInsert($data)
+    {
+        helper('text');
+        $verifyModel = new VerificationModel();
+        $verifyModel->insert([
+            'user_id' => $data['id'],
+            'verify_key' => random_string('alpha', 48), 
+            'verify_phone_code' => random_string('numeric', 6)
+        ]);
+    }
+
+    protected function verificationDelete($data)
+    {
+        $verifyModel = new VerificationModel();
+        $verifyModel->where('user_id', $data['id'][0])->delete();
+    }
 
     public function getUsersList()
     {
@@ -61,7 +110,6 @@ class UserModel extends Model
         $builder = $builder->get();
         return $builder->getResultArray();
     }
-
 
     public function getUserSelect($id = 4)
     {
@@ -91,7 +139,6 @@ class UserModel extends Model
         $builder = $builder->get();
         return $builder->getResultArray();
     }
-
 
     public function getUserAvgAge()
     {
@@ -150,7 +197,7 @@ class UserModel extends Model
     {
         $builder = $this->builder($this->table);
 
-        $builder = $builder->whereNotIn('id', [1,3,55,5,44]);
+        $builder = $builder->whereNotIn('id', [1, 3, 55, 5, 44]);
 
         $builder = $builder->get();
         return $builder->getResultArray();
