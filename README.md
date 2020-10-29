@@ -34,4 +34,5 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [NetGSM API ile SMS Gönderme](https://youtu.be/POZ27hoh2w4)
 - [İyzico API Ödeme Formu Oluşturma ve Ödeme Alma](https://youtu.be/fnMBtI19foQ)
 - [Shopier API ile Kredi Kartından Ödeme Alma](https://youtu.be/72N2r9BSXfo)
-- [ Model Callbacks Kullanımı - beforeInsert - afterInsert  - beforeDelete - afterDelete](https://youtu.be/Me-AnjvtII0)
+- [Model Callbacks Kullanımı - beforeInsert - afterInsert  - beforeDelete - afterDelete](https://youtu.be/Me-AnjvtII0)
+- [Entity ( Entites ) Sınıfı Kullanımı](https://youtu.be/Qlwp_f7_K7Y)
