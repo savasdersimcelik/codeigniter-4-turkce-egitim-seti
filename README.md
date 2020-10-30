@@ -36,3 +36,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Shopier API ile Kredi Kartından Ödeme Alma](https://youtu.be/72N2r9BSXfo)
 - [Model Callbacks Kullanımı - beforeInsert - afterInsert  - beforeDelete - afterDelete](https://youtu.be/Me-AnjvtII0)
 - [Entity ( Entites ) Sınıfı Kullanımı](https://youtu.be/Qlwp_f7_K7Y)
+- [Dropzone.JS ile Resim Yükleme Sistemi](https://www.youtube.com/watch?v=6A1v_4dVemU)
