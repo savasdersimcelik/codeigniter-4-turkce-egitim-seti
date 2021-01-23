@@ -37,3 +37,4 @@ CodeIgniter 4 ile ilgili öğrenilmesi gereken ne varsa hem dökümantasyon ve 3
 - [Model Callbacks Kullanımı - beforeInsert - afterInsert  - beforeDelete - afterDelete](https://youtu.be/Me-AnjvtII0)
 - [Entity ( Entites ) Sınıfı Kullanımı](https://youtu.be/Qlwp_f7_K7Y)
 - [Dropzone.JS ile Resim Yükleme Sistemi](https://www.youtube.com/watch?v=6A1v_4dVemU)
+- [Google Authenticator - Çift Taraflı Doğrulama Sistemi](https://www.youtube.com/watch?v=6A1v_4dVemU)
