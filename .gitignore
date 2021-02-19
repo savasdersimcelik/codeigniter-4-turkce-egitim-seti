@@ -6,5 +6,7 @@ shopier/.env
 shopier/vendor/
 entity/.env
 entity/vendor/
+customview/.env
+customview/vendor/
 dev/
 .idea
