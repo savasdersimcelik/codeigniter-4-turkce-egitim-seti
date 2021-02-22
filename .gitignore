@@ -8,5 +8,7 @@ entity/.env
 entity/vendor/
 customview/.env
 customview/vendor/
+hmvc/.env
+hmvc/vendor/
 dev/
 .idea
